@@ -21,13 +21,13 @@ USE `fe_engage_bond_ring`;
 
 -- Listage de la structure de table fe_engage_bond_ring. anneau
 CREATE TABLE IF NOT EXISTS `anneau` (
-  `idAnneau` int NOT NULL AUTO_INCREMENT,
+  `id_anneau` int NOT NULL AUTO_INCREMENT,
   `lettre` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`idAnneau`)
+  PRIMARY KEY (`id_anneau`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table fe_engage_bond_ring.anneau : ~0 rows (environ)
-INSERT INTO `anneau` (`idAnneau`, `lettre`) VALUES
+-- Listage des données de la table fe_engage_bond_ring.anneau : ~4 rows (environ)
+INSERT INTO `anneau` (`id_anneau`, `lettre`) VALUES
 	(1, 'C'),
 	(2, 'B'),
 	(3, 'A'),
@@ -35,13 +35,13 @@ INSERT INTO `anneau` (`idAnneau`, `lettre`) VALUES
 
 -- Listage de la structure de table fe_engage_bond_ring. emblem
 CREATE TABLE IF NOT EXISTS `emblem` (
-  `idEmblem` int NOT NULL AUTO_INCREMENT,
+  `id_emblem` int NOT NULL AUTO_INCREMENT,
   `perso` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  PRIMARY KEY (`idEmblem`)
+  PRIMARY KEY (`id_emblem`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table fe_engage_bond_ring.emblem : ~0 rows (environ)
-INSERT INTO `emblem` (`idEmblem`, `perso`) VALUES
+-- Listage des données de la table fe_engage_bond_ring.emblem : ~12 rows (environ)
+INSERT INTO `emblem` (`id_emblem`, `perso`) VALUES
 	(1, 'Marth'),
 	(2, 'Celica'),
 	(3, 'Sigurd'),
@@ -57,17 +57,17 @@ INSERT INTO `emblem` (`idEmblem`, `perso`) VALUES
 
 -- Listage de la structure de table fe_engage_bond_ring. heros
 CREATE TABLE IF NOT EXISTS `heros` (
-  `idHeros` int NOT NULL AUTO_INCREMENT,
+  `id_heros` int NOT NULL AUTO_INCREMENT,
   `emplacement` int NOT NULL,
   `nom` varchar(50) COLLATE utf8mb4_bin NOT NULL,
-  `idEmblem` int NOT NULL,
-  PRIMARY KEY (`idHeros`),
-  KEY `idEmblem` (`idEmblem`) USING BTREE,
-  CONSTRAINT `heros_ibfk_1` FOREIGN KEY (`idEmblem`) REFERENCES `emblem` (`idEmblem`)
+  `emblem_id` int NOT NULL,
+  PRIMARY KEY (`id_heros`) USING BTREE,
+  KEY `idEmblem` (`emblem_id`) USING BTREE,
+  CONSTRAINT `heros_ibfk_1` FOREIGN KEY (`emblem_id`) REFERENCES `emblem` (`id_emblem`)
 ) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table fe_engage_bond_ring.heros : ~0 rows (environ)
-INSERT INTO `heros` (`idHeros`, `emplacement`, `nom`, `idEmblem`) VALUES
+-- Listage des données de la table fe_engage_bond_ring.heros : ~120 rows (environ)
+INSERT INTO `heros` (`id_heros`, `emplacement`, `nom`, `emblem_id`) VALUES
 	(1, 1, 'Shiida', 1),
 	(2, 2, 'Ogma', 1),
 	(3, 3, 'Nabarl', 1),
@@ -191,17 +191,17 @@ INSERT INTO `heros` (`idHeros`, `emplacement`, `nom`, `idEmblem`) VALUES
 
 -- Listage de la structure de table fe_engage_bond_ring. qtt
 CREATE TABLE IF NOT EXISTS `qtt` (
-  `idHeros` int NOT NULL,
-  `idAnneau` int NOT NULL,
-  `qtt` int DEFAULT '0',
-  PRIMARY KEY (`idHeros`,`idAnneau`),
-  KEY `idAnneau` (`idAnneau`),
-  CONSTRAINT `qtt_ibfk_1` FOREIGN KEY (`idHeros`) REFERENCES `heros` (`idHeros`),
-  CONSTRAINT `qtt_ibfk_2` FOREIGN KEY (`idAnneau`) REFERENCES `anneau` (`idAnneau`)
+  `heros_id` int NOT NULL,
+  `anneau_id` int NOT NULL,
+  `qtt` int NOT NULL DEFAULT '0',
+  PRIMARY KEY (`heros_id`,`anneau_id`) USING BTREE,
+  KEY `idAnneau` (`anneau_id`) USING BTREE,
+  CONSTRAINT `qtt_ibfk_1` FOREIGN KEY (`heros_id`) REFERENCES `heros` (`id_heros`),
+  CONSTRAINT `qtt_ibfk_2` FOREIGN KEY (`anneau_id`) REFERENCES `anneau` (`id_anneau`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Listage des données de la table fe_engage_bond_ring.qtt : ~480 rows (environ)
-INSERT INTO `qtt` (`idHeros`, `idAnneau`, `qtt`) VALUES
+INSERT INTO `qtt` (`heros_id`, `anneau_id`, `qtt`) VALUES
 	(1, 1, 0),
 	(1, 2, 0),
 	(1, 3, 0),
