@@ -7,4 +7,4 @@ Due to the predetermination it is possible to know what you will get no matter w
 
 My problem is that the ergonomics of the menu and the display of the info in it is not pleasant and to facilitate my access to the information I need, I decided to make a site that will allow me to practice my skills in web development and create a tool that will be useful to me and potentially to others.
 
-For now only a clean database is present.
+For now only a clean database and a miniframework is present.
