@@ -137,7 +137,7 @@ INSERT INTO `heros` (`id_heros`, `emplacement`, `nom`, `emblem_id`) VALUES
 	(67, 7, 'Innes', 7),
 	(68, 8, 'Gerik', 7),
 	(69, 9, 'Marisa', 7),
-	(70, 10, 'L\'Arachel', 7),
+	(70, 10, "L'Arachel", 7),
 	(71, 1, 'Mist', 8),
 	(72, 2, 'Titania', 8),
 	(73, 3, 'Shinon', 8),
