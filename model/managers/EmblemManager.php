@@ -14,4 +14,16 @@
             parent::connect();
         }
 
+        public function nameEmblem($id){
+            $sql="
+            SELECT e.perso
+            FROM emblem e
+            WHERE e.id_emblem = :id";
+
+            return $this->getOneOrNullResult(
+                DAO::update($sql,['id'=>$id]),
+                $this->className
+            );
+        }
+
     }
