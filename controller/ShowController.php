@@ -15,5 +15,13 @@
 
         public function index(){}
         
-        
+        public function allRing(){
+
+            $qttManager = new QttManager();
+
+            return [
+                "view" => VIEW_DIR."show/allRing.php",
+                "data" => ["qtt" => $qttManager->allTheRing()]
+            ];
+        }
     }
