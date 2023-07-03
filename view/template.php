@@ -1,3 +1,9 @@
+<?php
+    $menuEmblem = $result["data"]['emblemMenu'];
+    $menuEmplacement = $result["data"]['emplacementMenu'];
+    $menuRarity = $result["data"]['rarityMenu'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,9 +21,43 @@
 <body>
     <div id="wrapper">
         <header>
-            <nav>
-                
-            </nav>
+        <nav>
+            <menu>
+                <menuitem>
+                    <a href="#">All</a>
+                </menuitem>
+                <menuitem class="demo">
+                    <a>by Emblem</a>
+                    <menu>
+                    <?php
+                        foreach($menuEmblem[0] as $emblem) { ?>
+                            <menuitem><a href="#"><?= $emblem->getPerso() ?></a></menuitem>
+                        <?php }
+                    ?>
+                </menu>
+                </menuitem>
+            <menuitem>
+                <a>by Emplacement</a>
+                <menu>
+                    <?php
+                        foreach($menuEmplacement[0] as $emplacement) { ?>
+                            <menuitem><a href="#"><?= $emplacement->getEmplacement() ?></a></menuitem>
+                        <?php }
+                    ?>
+                </menu>
+            </menuitem>
+            <menuitem>
+                <a>by Rarity</a>
+                <menu>
+                    <?php
+                        foreach($menuRarity[0] as $rarity) { ?>
+                            <menuitem><a href="#"><?= $rarity->getLettre() ?></a></menuitem>
+                        <?php }
+                    ?>
+                </menu>
+            </menuitem>
+		</menu>
+	</nav>
         </header>
         <div id="mainpage">
             <!-- c'est ici que les messages (erreur ou succès) s'affichent-->
@@ -29,7 +69,6 @@
             </main>
         </div>
         <footer>
-            <p>&copy; 2020 - Forum CDA - <a href="/home/forumRules.html">Règlement du forum</a> - <a href="">Mentions légales</a></p>
             <!--<button id="ajaxbtn">Surprise en Ajax !</button> -> cliqué <span id="nbajax">0</span> fois-->
         </footer>
         <script src="<?= PUBLIC_DIR ?>/js/script.js"></script>
