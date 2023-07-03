@@ -13,4 +13,16 @@
         public function __construct(){
             parent::connect();
         }
+
+        public function emplacement(){
+            $sql="
+                SELECT h.emplacement
+                FROM heros h
+                GROUP BY h.emplacement";
+
+            return $this->getMultipleResults(
+                    DAO::select($sql),
+                    $this->className
+            );
+        }
     }
