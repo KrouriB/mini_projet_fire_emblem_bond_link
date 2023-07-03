@@ -20,10 +20,10 @@
         public function __construct(){
             $emblemManager = new EmblemManager();
             $herosManager = new HerosManager();
-            $rarityManager = new RarityManager();
+            $anneauManager = new AnneauManager();
             $this->emblem = array($emblemManager->findAll(["perso", "ASC"]));
             $this->emplacement = array($herosManager->emplacement());
-            $this->rarity = array($rarityManager->findAll(["lettre", "ASC"]));
+            $this->rarity = array($anneauManager->findAll(["id_anneau", "DESC"]));
         }
 
         public function index(){}
@@ -51,8 +51,8 @@
             return [
                 "view" => VIEW_DIR."show/ringByEmblem.php",
                 "data" => [
-                    "emblem" => $emblemManager->nameEmblem($id),
                     "qtt" => $qttManager->allRingByEmblem($id),
+                    "emblem" => $emblemManager->nameEmblem($id),
                     "emblemMenu" => $this->emblem,
                     "emplacementMenu" => $this->emplacement,
                     "rarityMenu" => $this->rarity
