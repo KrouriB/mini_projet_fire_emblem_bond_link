@@ -43,7 +43,7 @@
 
         public function allRingByEmplacement($id){
             $sql="
-                SELECT h.nom , q.qtt
+                SELECT h.nom , a.lettre , q.qtt
                 FROM qtt q
                 INNER JOIN heros h ON q.heros_id = h.id_heros
                 INNER JOIN anneau a ON q.anneau_id = a.id_anneau
@@ -55,7 +55,7 @@
             );
         }
 
-        public function allRingByEmplacement($id){
+        public function allRingByEmblem($id){
             $sql="
                 SELECT h.nom , a.lettre , q.qtt
                 FROM qtt q
