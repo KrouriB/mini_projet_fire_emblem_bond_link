@@ -13,6 +13,19 @@
     
     class ShowController extends AbstractController implements ControllerInterface{
 
+        private array $emblem;
+        private array $emplacement;
+        private array $rarity;
+
+        public function __construct(){
+            $emblemManager = new EmblemManager();
+            $herosManager = new HerosManager();
+            $rarityManager = new RarityManager();
+            $this->emblem = array($emblemManager->findAll(["perso", "ASC"]));
+            $this->emplacement = array($herosManager->emplacement());
+            $this->rarity = array($rarityManager->findAll(["lettre", "ASC"]));
+        }
+
         public function index(){}
         
         public function allRing(){
@@ -21,7 +34,60 @@
 
             return [
                 "view" => VIEW_DIR."show/allRing.php",
-                "data" => ["qtt" => $qttManager->allTheRing()]
+                "data" => [
+                    "qtt" => $qttManager->allTheRing(),
+                    "emblemMenu" => $this->emblem,
+                    "emplacementMenu" => $this->emplacement,
+                    "rarityMenu" => $this->rarity
+                    ]
+            ];
+        }
+
+        public function ringByEmblem($id){
+
+            $qttManager = new QttManager();
+            $emblemManager = new EmblemManager();
+
+            return [
+                "view" => VIEW_DIR."show/ringByEmblem.php",
+                "data" => [
+                    "emblem" => $emblemManager->nameEmblem($id),
+                    "qtt" => $qttManager->allRingByEmblem($id),
+                    "emblemMenu" => $this->emblem,
+                    "emplacementMenu" => $this->emplacement,
+                    "rarityMenu" => $this->rarity
+                    
+                    ]
+            ];
+        }
+
+        public function ringByEmplacement($id){
+
+            $qttManager = new QttManager();
+
+            return [
+                "view" => VIEW_DIR."show/ringByEmplacement.php",
+                "data" => [
+                    "qtt" => $qttManager->allRingByEmplacement($id),
+                    "emblemMenu" => $this->emblem,
+                    "emplacementMenu" => $this->emplacement,
+                    "rarityMenu" => $this->rarity
+                    ]
+            ];
+        }
+
+        public function ringByRarity($id){
+
+            $qttManager = new QttManager();
+
+            return [
+                "view" => VIEW_DIR."show/ringByRarity.php",
+                "data" => [
+                    "qtt" => $qttManager->allRiningByRarity($id),
+                    "emblemMenu" => $this->emblem,
+                    "emplacementMenu" => $this->emplacement,
+                    "rarityMenu" => $this->rarity
+                    ]
             ];
         }
     }
