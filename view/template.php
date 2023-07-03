@@ -24,14 +24,14 @@
         <nav>
             <menu>
                 <menuitem>
-                    <a href="#">All</a>
+                    <a href="index.php?ctrl=show&action=allRing">All</a>
                 </menuitem>
                 <menuitem class="demo">
                     <a>by Emblem</a>
                     <menu>
                     <?php
                         foreach($menuEmblem[0] as $emblem) { ?>
-                            <menuitem><a href="#"><?= $emblem->getPerso() ?></a></menuitem>
+                            <menuitem><a href="index.php?ctrl=show&action=ringByEmblem&id=<?= $emblem->getId() ?>"><?= $emblem->getPerso() ?></a></menuitem>
                         <?php }
                     ?>
                 </menu>
@@ -41,7 +41,7 @@
                 <menu>
                     <?php
                         foreach($menuEmplacement[0] as $emplacement) { ?>
-                            <menuitem><a href="#"><?= $emplacement->getEmplacement() ?></a></menuitem>
+                            <menuitem><a href="index.php?ctrl=show&action=ringByEmplacement&id=<?= $emplacement->getEmplacement() ?>"><?= $emplacement->getEmplacement() ?></a></menuitem>
                         <?php }
                     ?>
                 </menu>
@@ -51,7 +51,7 @@
                 <menu>
                     <?php
                         foreach($menuRarity[0] as $rarity) { ?>
-                            <menuitem><a href="#"><?= $rarity->getLettre() ?></a></menuitem>
+                            <menuitem><a href="index.php?ctrl=show&action=ringByRarity&id=<?= $rarity->getId() ?>"><?= $rarity->getLettre() ?></a></menuitem>
                         <?php }
                     ?>
                 </menu>
