@@ -16,12 +16,12 @@
 
         public function nameEmblem($id){
             $sql="
-            SELECT e.perso
-            FROM emblem e
-            WHERE e.id_emblem = :id";
+                SELECT e.perso
+                FROM emblem e
+                WHERE e.id_emblem = :id";
 
-            return $this->getOneOrNullResult(
-                DAO::update($sql,['id'=>$id]),
+            return $this->getMultipleResults(
+                DAO::select($sql,['id'=>$id]),
                 $this->className
             );
         }
