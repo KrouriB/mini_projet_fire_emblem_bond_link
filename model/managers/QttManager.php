@@ -73,4 +73,34 @@
                     $this->className
             );
         }
+
+        public function add($id){
+            $sql ="
+                UPDATE $this->tableName
+                SET qtt = qtt + 1
+                WHERE heros_id = :id";
+
+            // var_dump($sql);die;
+
+            return $this->getOneOrNullResult(
+                DAO::update($sql,['id'=>$id]),
+                $this->className
+            );
+            
+        }
+
+        public function minus($id){
+            $sql ="
+                UPDATE $this->tableName
+                SET qtt = qtt - 1
+                WHERE heros_id = :id";
+
+            // var_dump($sql);die;
+
+            return $this->getOneOrNullResult(
+                DAO::update($sql,['id'=>$id]),
+                $this->className
+            );
+            
+        }
     }
