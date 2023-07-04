@@ -90,4 +90,25 @@
                     ]
             ];
         }
+
+        public function more($id){
+
+            $qttManager = new QttManager();
+
+            $qttManager->minus($id);
+            $this->redirectTo($ctrl,$action,$id);
+        }
+
+        public function less($id){
+
+            $qttManager = new QttManager();
+
+            if($qttManager->findOneById($id)->getQtt() != 0){ 
+                $qttManager->minus($id);
+                $this->redirectTo($ctrl,$action,$id);
+            }
+            else{
+                $this->redirectTo($ctrl,$action,$id);
+            }
+        }
     }
