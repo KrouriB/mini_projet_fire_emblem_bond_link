@@ -74,13 +74,13 @@
             );
         }
 
+        //TODO Test the suery until it's work
+
         public function add($id){
             $sql ="
                 UPDATE $this->tableName
                 SET qtt = qtt + 1
                 WHERE heros_id = :id";
-
-            // var_dump($sql);die;
 
             return $this->getOneOrNullResult(
                 DAO::update($sql,['id'=>$id]),
@@ -94,8 +94,6 @@
                 UPDATE $this->tableName
                 SET qtt = qtt - 1
                 WHERE heros_id = :id";
-
-            // var_dump($sql);die;
 
             return $this->getOneOrNullResult(
                 DAO::update($sql,['id'=>$id]),
