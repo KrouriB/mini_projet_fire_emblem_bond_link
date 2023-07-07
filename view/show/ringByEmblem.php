@@ -11,7 +11,7 @@
 <div id="container">
     <?php
         foreach($qtts as $qtt){ ?>
-                <div class="aSingleRing twelve">
+                <div class="aSingleRing ten">
                     <h4><?= $qtt->getHeros()->getNom() ?> <?= $qtt->getAnneau()->getLettre() ?></h4>
                     <a href="index.php?ctrl=show&action=less&id=<?= $qtt->getHeros()->getId() ?>">-</a>
                     <span><?= $qtt->getQtt() ?></span>
