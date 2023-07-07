@@ -134,3 +134,22 @@ menuitem > menu > menuitem.hover > menu > menuitem {
 #mainpage {
     margin: 80px 40px 0 40px;
 }
+
+#container{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.aSingleRing{
+    display: flex;
+}
+
+.twelve {
+    width: 8.33%;
+    flex-basis: 8.33%;
+}
+
+.ten {
+    width: 10%;
+    flex-basis: 10%;
+}
