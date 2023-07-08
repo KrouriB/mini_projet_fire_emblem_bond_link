@@ -95,7 +95,7 @@
 
             $qttManager = new QttManager();
 
-            $qttManager->minus($id);
+            $qttManager->add($id);
             $this->redirectTo($ctrl,$action,$id);
         }
 
