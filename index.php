@@ -44,8 +44,16 @@
         $id = $_GET['id'];
     }
     else $id = null;
+    if(isset($_GET['id2'])){
+        $id2 = $_GET['id2'];
+    }
+    else $id2 = null;
+    if(isset($_GET['id3'])){
+        $id3 = $_GET['id3'];
+    }
+    else $id3 = null;
     //ex : HomeController->users(null)
-    $result = $ctrl->$action($id);
+    $result = $ctrl->$action($id,$id2,$id3);
     
     /*--------CHARGEMENT PAGE--------*/
     
