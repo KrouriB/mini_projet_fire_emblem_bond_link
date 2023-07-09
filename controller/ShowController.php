@@ -91,24 +91,67 @@
             ];
         }
 
-        public function more($id){
+        public function moreAll($id,$id2){
 
             $qttManager = new QttManager();
 
-            $qttManager->add($id);
-            $this->redirectTo($ctrl,$action,$id);
+            $qttManager->more($id,$id2);
+            $this->redirectTo("show","allRing");
         }
 
-        public function less($id){
+        public function lessAll($id,$id2){
+        
+            $qttManager = new QttManager();
+
+            $qttManager->minus($id,$id2);
+            $this->redirectTo("show","allRing");
+        }
+
+        public function moreEmblem($id,$id2,$id3){
 
             $qttManager = new QttManager();
 
-            if($qttManager->findOneById($id)->getQtt() != 0){ 
-                $qttManager->minus($id);
-                $this->redirectTo($ctrl,$action,$id);
-            }
-            else{
-                $this->redirectTo($ctrl,$action,$id);
-            }
+            $qttManager->more($id,$id2);
+            $this->redirectTo("show","ringByEmblem",$id3);
+        }
+
+        public function lessEmblem($id,$id2,$id3){
+        
+            $qttManager = new QttManager();
+
+            $qttManager->minus($id,$id2);
+            $this->redirectTo("show","ringByEmblem",$id3);
+        }
+
+        public function moreEmplacement($id,$id2,$id3){
+
+            $qttManager = new QttManager();
+
+            $qttManager->more($id,$id2);
+            $this->redirectTo("show","ringByEmplacement",$id3);
+        }
+
+        public function lessEmplacement($id,$id2,$id3){
+        
+            $qttManager = new QttManager();
+
+            $qttManager->minus($id,$id2);
+            $this->redirectTo("show","ringByEmplacement",$id3);
+        }
+
+        public function moreRarity($id,$id2){
+
+            $qttManager = new QttManager();
+
+            $qttManager->more($id,$id2);
+            $this->redirectTo("show","ringByRarity",$id2);
+        }
+
+        public function lessRarity($id,$id2){
+        
+            $qttManager = new QttManager();
+
+            $qttManager->minus($id,$id2);
+            $this->redirectTo("show","ringByRarity",$id2);
         }
     }
