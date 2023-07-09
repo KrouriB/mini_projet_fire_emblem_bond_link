@@ -76,27 +76,33 @@
 
         //TODO Test the suery until it's work
 
-        public function add($id){
+        public function more($id,$id2){
             $sql ="
                 UPDATE $this->tableName
-                SET qtt = qtt + 1
-                WHERE heros_id = :id";
+                SET qttNb = qttNb + 1
+                WHERE heros_id = :id AND anneau_id = :id2";
 
             return $this->getOneOrNullResult(
-                DAO::update($sql,['id'=>$id]),
+                DAO::update($sql,[
+                    'id'=>$id,
+                    'id2'=>$id2
+                ]),
                 $this->className
             );
             
         }
 
-        public function minus($id){
+        public function minus($id,$id2){
             $sql ="
                 UPDATE $this->tableName
-                SET qtt = qtt - 1
-                WHERE heros_id = :id";
+                SET qttNb = qttNb - 1
+                WHERE heros_id = :id AND anneau_id = :id2";
 
             return $this->getOneOrNullResult(
-                DAO::update($sql,['id'=>$id]),
+                DAO::update($sql,[
+                    'id'=>$id,
+                    'id2'=>$id2
+                ]),
                 $this->className
             );
             

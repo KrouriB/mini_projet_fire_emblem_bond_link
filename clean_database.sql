@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `emblem` (
   PRIMARY KEY (`id_emblem`) USING BTREE
 ) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table fe_engage_bond_ring.emblem : ~12 rows (environ)
+-- Listage des données de la table fe_engage_bond_ring.emblem : ~11 rows (environ)
 INSERT INTO `emblem` (`id_emblem`, `perso`) VALUES
 	(1, 'Marth'),
 	(2, 'Celica'),
@@ -66,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `heros` (
   CONSTRAINT `heros_ibfk_1` FOREIGN KEY (`emblem_id`) REFERENCES `emblem` (`id_emblem`)
 ) ENGINE=InnoDB AUTO_INCREMENT=121 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
--- Listage des données de la table fe_engage_bond_ring.heros : ~120 rows (environ)
+-- Listage des données de la table fe_engage_bond_ring.heros : ~90 rows (environ)
 INSERT INTO `heros` (`id_heros`, `emplacement`, `nom`, `emblem_id`) VALUES
 	(1, 1, 'Shiida', 1),
 	(2, 2, 'Ogma', 1),
@@ -137,7 +137,7 @@ INSERT INTO `heros` (`id_heros`, `emplacement`, `nom`, `emblem_id`) VALUES
 	(67, 7, 'Innes', 7),
 	(68, 8, 'Gerik', 7),
 	(69, 9, 'Marisa', 7),
-	(70, 10, "L'Arachel", 7),
+	(70, 10, 'L\'Arachel', 7),
 	(71, 1, 'Mist', 8),
 	(72, 2, 'Titania', 8),
 	(73, 3, 'Shinon', 8),
@@ -157,7 +157,7 @@ INSERT INTO `heros` (`id_heros`, `emplacement`, `nom`, `emblem_id`) VALUES
 	(87, 7, 'Naesala', 9),
 	(88, 8, 'Tibarn', 9),
 	(89, 9, 'Caineghis', 9),
-	(90, 10, 'Chevalier Noir', 9),
+	(90, 10, 'Chevalier&nbsp;Noir', 9),
 	(91, 1, 'Chrom', 10),
 	(92, 2, 'Lissa', 10),
 	(93, 3, 'Gaius', 10),
@@ -193,7 +193,7 @@ INSERT INTO `heros` (`id_heros`, `emplacement`, `nom`, `emblem_id`) VALUES
 CREATE TABLE IF NOT EXISTS `qtt` (
   `heros_id` int NOT NULL,
   `anneau_id` int NOT NULL,
-  `qtt` int NOT NULL DEFAULT '0',
+  `qttNb` int NOT NULL DEFAULT '0',
   PRIMARY KEY (`heros_id`,`anneau_id`) USING BTREE,
   KEY `idAnneau` (`anneau_id`) USING BTREE,
   CONSTRAINT `qtt_ibfk_1` FOREIGN KEY (`heros_id`) REFERENCES `heros` (`id_heros`),
@@ -201,7 +201,7 @@ CREATE TABLE IF NOT EXISTS `qtt` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_bin;
 
 -- Listage des données de la table fe_engage_bond_ring.qtt : ~480 rows (environ)
-INSERT INTO `qtt` (`heros_id`, `anneau_id`, `qtt`) VALUES
+INSERT INTO `qtt` (`heros_id`, `anneau_id`, `qttNb`) VALUES
 	(1, 1, 0),
 	(1, 2, 0),
 	(1, 3, 0),

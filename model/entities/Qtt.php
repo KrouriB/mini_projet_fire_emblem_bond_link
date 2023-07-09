@@ -7,7 +7,7 @@
 
                 private $heros;
                 private $anneau;
-                private $qtt;
+                private $qttNb;
 
                 public function __construct($data){         
                         $this->hydrate($data);        
@@ -54,21 +54,21 @@
                 }
 
                 /**
-                 * Get the value of qtt
+                 * Get the value of qttNb
                  */ 
-                public function getQtt()
+                public function getQttNb()
                 {
-                        return $this->qtt;
+                        return $this->qttNb;
                 }
 
                 /**
-                 * Set the value of qtt
+                 * Set the value of qttNb
                  *
                  * @return  self
                  */ 
-                public function setQtt($qtt)
+                public function setQttNb($qttNb)
                 {
-                        $this->qtt = $qtt;
+                        $this->qttNb = $qttNb;
 
                         return $this;
                 }
