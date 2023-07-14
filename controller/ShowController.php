@@ -56,7 +56,6 @@
                     "emblemMenu" => $this->emblem,
                     "emplacementMenu" => $this->emplacement,
                     "rarityMenu" => $this->rarity
-                    
                     ]
             ];
         }
